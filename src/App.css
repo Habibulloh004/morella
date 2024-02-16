@@ -2,8 +2,9 @@
 
 :root {
   --primary-color: rgb(105, 40, 93);
-  --secondary-color: rgb(208, 174, 0);
+  --secondary-color: rgb(255, 211, 0);
   --white-color: white;
+  --red-color: rgb(249, 0, 0);
   ---black-color: black;
 }
 
@@ -16,6 +17,7 @@ body {
   text-align: center;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
+  color: black !important ;
 }
 
 /* styles.css */
@@ -30,6 +32,7 @@ body {
   width: 50%;
   height: 100%;
   background: var(--secondary-color);
+  color: var(--black-color);
 }
 .section-half-second {
   width: 50%;
@@ -37,7 +40,18 @@ body {
   background-color: var(--primary-color);
 }
 
-.ul-text-center {
+.ul-text-center1 {
+  text-align: center;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+}
+.ul-text-center2 {
   text-align: center;
   display: flex;
   gap: 30px;
@@ -49,7 +63,19 @@ body {
   text-align: center;
 }
 
-.bg-blue {
+.bg-blue1 {
+  /* background-color: rgba(0, 0, 0, 0.351); */
+  width: 25%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 3.5rem;
+  color: var(--black-color);
+  list-style: none;
+}
+.bg-blue2 {
   /* background-color: rgba(0, 0, 0, 0.351); */
   width: 25%;
   aspect-ratio: 1/1;
@@ -62,15 +88,28 @@ body {
   list-style: none;
 }
 
-.sentence {
+.sentence1 {
   margin: 0 auto;
   padding-bottom: 30px;
   margin-top: 30px;
-  border-bottom: 3px solid var(--white-color);
+  border-bottom: 3px solid black;
   width: 80%;
+  color:var(--black-color);
+}
+.sentence2 {
+  margin: 0 auto;
+  padding-bottom: 30px;
+  margin-top: 30px;
+  border-bottom: 3px solid white;
+  width: 80%;
+  color:var(--white-color);
 }
 
-.word {
-  color: var(--white-color);
+.word1 {
+  color:var(--black-color);
+  font-size: 2.5rem;
+}
+.word2 {
+  color:var(--white-color);
   font-size: 2.5rem;
 }

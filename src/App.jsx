@@ -26,26 +26,26 @@ function App() {
   return (
     <main className="flex-container">
       <section className="section-half-first">
-        <div className="sentence">
-          <span className="word">Tayyorlanyapti |</span>
-          <span className="word"> Готовиться</span>
+        <div className="sentence1">
+          <span className="word1">Tayyorlanyapti |</span>
+          <span className="word1"> Готовиться</span>
         </div>
-        <ul className="ul-text-center">
+        <ul className="ul-text-center1">
           {data.set1.map((item, idx) => (
-            <li className="bg-blue" key={idx}>
+            <li className="bg-blue1" key={idx}>
               {item}
             </li>
           ))}
         </ul>
       </section>
       <section className="section-half-second">
-        <div className="sentence">
-          <span className="word">Tayyor |</span>
-          <span className="word"> Готов</span>
+        <div className="sentence2">
+          <span className="word2">Tayyor |</span>
+          <span className="word2"> Готов</span>
         </div>
-        <ul className="ul-text-center">
+        <ul className="ul-text-center2">
           {data.set2.map((item, idx) => (
-            <li className="bg-blue" key={idx}>
+            <li className="bg-blue2" key={idx}>
               {item}
             </li>
           ))}
