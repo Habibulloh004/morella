@@ -48,7 +48,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 30px auto 0;
   /* width: 95%; */
   text-align: center;
 }
@@ -60,15 +60,13 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 30px auto 0;
   /* width: 90%; */
   text-align: center;
 }
 
 .bg-blue1 {
   /* background-color: rgba(0, 0, 0, 0.351); */
-  width: 20%;
-  aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,8 +78,6 @@ body {
 }
 .bg-blue2 {
   /* background-color: rgba(0, 0, 0, 0.351); */
-  width: 20%;
-  aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,9 +107,9 @@ body {
 
 .word1 {
   color: var(--black-color);
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 .word2 {
   color: var(--white-color);
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
