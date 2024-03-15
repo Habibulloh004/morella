@@ -9,7 +9,7 @@ function App() {
     const fetchData = async () => {
       try {
         setInterval(async () => {
-          const response = await axios.get("https://morella.replit.app/");
+          const response = await axios.get("https://morella-4c66948d8aa4.herokuapp.com/");
           setData(response.data);
         }, 3000);
       } catch (error) {
