@@ -23,7 +23,7 @@ function App() {
   // }, [])
   useEffect(() => {
     const getUser = localStorage.getItem("login");
-    socket.emit("join_room", JSON.parse(getUser));
+    socket.emit("join_room", getUser);
   }, []);
 
   useEffect(() => {
