@@ -18,6 +18,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   color: black !important ;
+  height: 100vh;
 }
 
 /* styles.css */
@@ -26,6 +27,7 @@ body {
   display: flex;
   width: 100vw;
   height: 100vh;
+  position: relative;
 }
 
 .section-half-first {
@@ -46,7 +48,7 @@ body {
   row-gap: 10px;
   column-gap: 40px;
   flex-wrap: wrap;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   margin: 30px auto 0;
   /* width: 95%; */
@@ -107,9 +109,20 @@ body {
 
 .word1 {
   color: var(--black-color);
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 .word2 {
   color: var(--white-color);
-  font-size: 2rem;
+  font-size: 1.8rem;
+}
+
+.loginCont {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  inset: 0;
+  width: 200px;
+  margin: auto;
+  gap: 10px;
+  margin-top: 100px;
 }
