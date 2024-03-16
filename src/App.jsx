@@ -30,18 +30,18 @@ function App() {
     socket.on("recieve_message", (data) => {
       setRecieveMsg(data);
       const list2 = localStorage.getItem("list_2");
-      setAudioPlayed(true);
       // setTimeout(() => {
       //   setAudioPlayed(false)
       // }, 2000)
       if (list2 !== data.list_2) {
+        setAudioPlayed(true);
         localStorage.setItem("list_2", JSON.stringify(data.list_2));
       }
     });
   }, [socket]);
 
   console.log(audioPlayed);
-  
+
   useEffect(() => {
     console.log("rmsg", recieveMsg);
   }, [recieveMsg]);
@@ -97,7 +97,9 @@ function App() {
                 )}
             </ul>
           </section>
-          {audioPlayed && <ReactAudioPlayer src={notice} autoPlay={audioPlayed} />}
+          {audioPlayed && (
+            <ReactAudioPlayer src={notice} autoPlay={audioPlayed} />
+          )}
         </>
       )}
     </main>
