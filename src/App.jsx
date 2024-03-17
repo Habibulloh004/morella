@@ -24,20 +24,23 @@ function App() {
     socket.emit("join_room", getUser);
   }, []);
 
-
   useEffect(() => {
     socket.on("recieve_message", (data) => {
+      setAudioPlayed(true);
       setRecieveMsg(data);
+      console.log(data);
     });
   }, [socket]);
 
-  useEffect(() => {
-    if (recieveMsg?.music === 1) {
-      setAudioPlayed(true);
-    }
-  }, [recieveMsg]);
+  // useEffect(() => {
+  //   setAudioPlayed(true);
+  //   if (recieveMsg?.music === 1) {
+  //     console.log("ishlad");
+  //   }
+  // }, [recieveMsg]);
 
 
+  console.log(audioPlayed);
   const login = localStorage.getItem("login");
 
   return (
@@ -89,6 +92,7 @@ function App() {
                 )}
             </ul>
           </section>
+          <button onClick={() => setAudioPlayed(true)}>click</button>
           {audioPlayed && (
             // <ReactAudioPlayer src={notice} autoPlay={audioPlayed} />
             <ReactAudioPlayer
@@ -98,6 +102,12 @@ function App() {
                 setAudioPlayed(false);
               }}
             />
+            // <ReactAudioPlayer
+            //   src={notice}
+            //   autoPlay
+            //   onEnded={handleAudioEnded}
+            // />
+            // <audio src={notice} autoPlay={audioPlayed} onEnded={() => setAudioPlayed(false)} />
           )}
         </>
       )}
