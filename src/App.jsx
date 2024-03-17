@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import io from "socket.io-client";
 import notice from "../src/notification.mp3";
 import ReactAudioPlayer from "react-audio-player";
+import ReactPlayer from "react-player";
 
 const socket = io.connect("https://web-socket-server-8k3j.onrender.com");
 
@@ -18,38 +19,30 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   setAudioPlayed(true)
-  // }, [])
   useEffect(() => {
     const getUser = localStorage.getItem("login");
     socket.emit("join_room", getUser);
   }, []);
 
+
   useEffect(() => {
     socket.on("recieve_message", (data) => {
       setRecieveMsg(data);
-      const list2 = localStorage.getItem("list_2");
-      // setTimeout(() => {
-      //   setAudioPlayed(false)
-      // }, 2000)
-      if (list2 !== data.list_2) {
-        setAudioPlayed(true);
-        localStorage.setItem("list_2", JSON.stringify(data.list_2));
-      }
     });
   }, [socket]);
 
-  console.log(audioPlayed);
-
   useEffect(() => {
-    console.log("rmsg", recieveMsg);
+    if (recieveMsg?.music === 1) {
+      setAudioPlayed(true);
+    }
   }, [recieveMsg]);
+
 
   const login = localStorage.getItem("login");
 
   return (
     <main className="flex-container">
+      <button onClick={() => setAudioPlayed(true)}>click</button>
       {!login && (
         <div className="loginCont">
           <input
@@ -98,7 +91,14 @@ function App() {
             </ul>
           </section>
           {audioPlayed && (
-            <ReactAudioPlayer src={notice} autoPlay={audioPlayed} />
+            // <ReactAudioPlayer src={notice} autoPlay={audioPlayed} />
+            <ReactAudioPlayer
+              src={notice}
+              autoPlay={audioPlayed}
+              onEnded={() => {
+                setAudioPlayed(false);
+              }}
+            />
           )}
         </>
       )}
