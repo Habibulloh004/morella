@@ -42,7 +42,6 @@ function App() {
 
   return (
     <main className="flex-container">
-      <button onClick={() => setAudioPlayed(true)}>click</button>
       {!login && (
         <div className="loginCont">
           <input
