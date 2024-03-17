@@ -28,7 +28,7 @@ function App() {
     socket.on("recieve_message", (data) => {
       setAudioPlayed(true);
       setRecieveMsg(data);
-      console.log(data);
+      // console.log(data);
     });
   }, [socket]);
 
@@ -40,7 +40,7 @@ function App() {
   // }, [recieveMsg]);
 
 
-  console.log(audioPlayed);
+  // console.log(audioPlayed);
   const login = localStorage.getItem("login");
 
   return (
@@ -92,7 +92,6 @@ function App() {
                 )}
             </ul>
           </section>
-          <button onClick={() => setAudioPlayed(true)}>click</button>
           {audioPlayed && (
             // <ReactAudioPlayer src={notice} autoPlay={audioPlayed} />
             <ReactAudioPlayer
