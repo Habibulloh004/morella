@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import notice from "../src/notification.mp3";
 import ReactAudioPlayer from "react-audio-player";
@@ -11,6 +11,7 @@ function App() {
   const [recieveMsg, setRecieveMsg] = useState(null);
   const [user, setUser] = useState("");
   const [audioPlayed, setAudioPlayed] = useState(false);
+  const audioPlayerRef = useRef(null);
 
   const joinRoom = () => {
     if (user !== "") {
@@ -24,25 +25,43 @@ function App() {
     socket.emit("join_room", getUser);
   }, []);
 
+  const click = () => setAudioPlayed(true);
   useEffect(() => {
     socket.on("recieve_message", (data) => {
-      setAudioPlayed(true);
       setRecieveMsg(data);
-      // console.log(data);
+      // console.log("res",data);
+    });
+
+  }, [socket]);
+
+  useEffect(() => {
+    socket.on("music_recieve_message", (data) => {
+      click();
+      // console.log("mus",data);
     });
   }, [socket]);
 
   // useEffect(() => {
-  //   setAudioPlayed(true);
   //   if (recieveMsg?.music === 1) {
-  //     console.log("ishlad");
+  //     // Ensure audioPlayed is true
+  //     // Try ReactAudioPlayer playback (if used)
+  //     if (audioPlayerRef.current) {
+  //       try {
+  //         setAudioPlayed(true)
+  //         audioPlayerRef.current.play(); // Attempt to play
+  //       } catch (error) {
+  //         console.error("ReactAudioPlayer error:", error);
+  //       }
+  //     } else {
+  //       console.warn("ReactAudioPlayer ref not available");
+  //     }
   //   }
-  // }, [recieveMsg]);
-
+  // }, [recieveMsg, audioPlayed, audioPlayerRef]);
 
   // console.log(audioPlayed);
   const login = localStorage.getItem("login");
 
+  // console.log(audioPlayed);
   return (
     <main className="flex-container">
       {!login && (
@@ -75,7 +94,11 @@ function App() {
             </ul>
           </section>
           <section className="section-half-second">
-            <div className="sentence2">
+            <div
+              onClick={() => setAudioPlayed(true)}
+              style={{ cursor: "pointer" }}
+              className="sentence2"
+            >
               <span className="word2">Tayyor |</span>
               <span className="word2"> Готов</span>
             </div>
@@ -93,13 +116,15 @@ function App() {
             </ul>
           </section>
           {audioPlayed && (
-            // <ReactAudioPlayer src={notice} autoPlay={audioPlayed} />
             <ReactAudioPlayer
+              ref={audioPlayerRef} // Add ref for later control
               src={notice}
               autoPlay={audioPlayed}
               onEnded={() => {
                 setAudioPlayed(false);
               }}
+              // Include error handling
+              onError={(error) => console.error("Audio error:", error)}
             />
             // <ReactAudioPlayer
             //   src={notice}
